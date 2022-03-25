@@ -392,4 +392,22 @@
         <tag>typescript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>css实现漂亮的弧形</title>
+    <url>/2022/03/25/css%E5%AE%9E%E7%8E%B0%E6%BC%82%E4%BA%AE%E7%9A%84%E5%BC%A7%E5%BD%A2/</url>
+    <content><![CDATA[<h1 id="CSS-实现漂亮的弧形"><a href="#CSS-实现漂亮的弧形" class="headerlink" title="CSS 实现漂亮的弧形"></a>CSS 实现漂亮的弧形</h1><p><strong>HTMl 如下</strong>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;d1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>CSS 如下：</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">.d1&#123; width: 100%; height: 100px; position: relative; overflow: hidden; &#125;</span><br><span class="line">.d1::after&#123; content: &quot;&quot;; width: 140%; height: 100px; position:absolute; left:</span><br><span class="line">-20%; top: 0; background-color: rgb(44, 111, 199); z-index: -1; border-radius: 0</span><br><span class="line">0 50% 50%; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现效果如下：</strong><br><a href="https://imgtu.com/i/qtCrh8"><img src="https://s1.ax1x.com/2022/03/25/qtCrh8.png" alt="qtCrh8.png"></a></p>
+]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
 </search>
