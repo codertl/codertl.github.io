@@ -408,4 +408,27 @@
         <tag>vue3</tag>
       </tags>
   </entry>
+  <entry>
+    <title>将svg文件加载为vue组件</title>
+    <url>/2022/04/27/%E5%B0%86svg%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E4%B8%BAvue%E7%BB%84%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="将-svg-文件加载为-vue-组件"><a href="#将-svg-文件加载为-vue-组件" class="headerlink" title="将 svg 文件加载为 vue 组件"></a>将 svg 文件加载为 vue 组件</h1><p><strong>vite-svg-loader 是一个 vite2.x 社区插件,只支持 vue3,用于将 svg 文件转换成 vue 组件进行使用</strong></p>
+<p><strong>基本使用</strong></p>
+<p><strong>安装插件</strong></p>
+<p><code>npm install vite-svg-loader -D</code></p>
+<p><strong>在 vite.config.js 里配置插件</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> svgLoader <span class="keyword">from</span> <span class="string">&quot;vite-svg-loader&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">vue</span>(), <span class="title function_">svgLoader</span>()],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>准备 svg 文件进行引入 svg</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> avatar <span class="keyword">from</span> <span class="string">&quot;@/assets/img/avatar.svg?component&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>和使用组件一样使用 svg</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">avatar</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>vue3</category>
+      </categories>
+      <tags>
+        <tag>vue3 vite</tag>
+      </tags>
+  </entry>
 </search>
