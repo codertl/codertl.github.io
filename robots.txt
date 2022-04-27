@@ -1,0 +1,6 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+​
+Sitemap: https://codertl.github.io/sitemap.xml
+Sitemap: https://codertl.github.io/baidusitemap.xml
