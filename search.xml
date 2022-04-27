@@ -431,4 +431,13 @@
         <tag>vue3</tag>
       </tags>
   </entry>
+  <entry>
+    <title>js-deepClone</title>
+    <url>/2022/04/27/js-deepClone/</url>
+    <content><![CDATA[<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepClone</span>(<span class="params">param = &#123;&#125;</span>) &#123;</span><br><span class="line">  <span class="comment">// 传入的参数不是对象和数组，是null，就直接返回</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> param !== <span class="string">&quot;object&quot;</span> || param === <span class="literal">null</span>) <span class="keyword">return</span> param;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化返回结果</span></span><br><span class="line">  <span class="keyword">let</span> result = <span class="title class_">Array</span>.<span class="title function_">isArray</span>(param) ? [] : &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (key <span class="keyword">in</span> param) &#123;</span><br><span class="line">    <span class="comment">// 判断自身属性中是否存在该属性</span></span><br><span class="line">    <span class="keyword">if</span> (obj.<span class="title function_">hasOwnProperty</span>(key)) &#123;</span><br><span class="line">      <span class="comment">// 递归调用</span></span><br><span class="line">      result[key] = <span class="title function_">deepClone</span>(param[key]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
 </search>
