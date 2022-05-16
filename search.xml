@@ -440,4 +440,275 @@
         <tag>js</tag>
       </tags>
   </entry>
+  <entry>
+    <title>learn_mysql</title>
+    <url>/2022/05/16/learn-mysql/</url>
+    <content><![CDATA[<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h2 id="DDL"><a href="#DDL" class="headerlink" title="DDL"></a>DDL</h2><p><strong>简介：</strong>DDL（Data Definition Language）数据定义语句。这些语句定义了不同的数据段、数据库、表、列、索引、约束等数据库对象。常用的语句关键字主要有<code>CREATGE</code>、<code>DROP</code>、<code>ALTER</code>等。是对数据库内部对象进行创建、删除、修改等操作的语言。</p>
+<h3 id="DDL-数据库操作"><a href="#DDL-数据库操作" class="headerlink" title="DDL - 数据库操作"></a>DDL - 数据库操作</h3><h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><p><strong>查询所有数据库</strong></p>
+<p><code>SHOW DATABASES;</code></p>
+<p><strong>查询当前数据库</strong></p>
+<p><code>SELECT DATABASE();</code></p>
+<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><p><code>CREATE DATABASE [IF NOT EXISTS] 数据库名 [DEFAULT CHARSET 字符集] [COLLATE 排序规则];</code></p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><p><code>DROP DATABASE [IF EXISTS] 数据库名;</code></p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p><code>USE 数据库名;</code></p>
+<h3 id="DDL-表操作-查询"><a href="#DDL-表操作-查询" class="headerlink" title="DDL - 表操作 - 查询"></a>DDL - 表操作 - 查询</h3><p><strong>查询当前数据库所有表</strong></p>
+<p><code>SHOW TABLES;</code></p>
+<p><strong>查询表结构</strong></p>
+<p><code>DESC 表名;</code></p>
+<p><strong>查询指定表的建表语句</strong></p>
+<p><code>SHOW CREATE TABLE 表名;</code></p>
+<h3 id="DDL-表操作-创建"><a href="#DDL-表操作-创建" class="headerlink" title="DDL - 表操作 - 创建"></a>DDL - 表操作 - 创建</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表名(</span><br><span class="line">	字段<span class="number">1</span> 字段<span class="number">1</span>类型 [COMMENT 字段注释],</span><br><span class="line">    字段<span class="number">2</span> 字段<span class="number">2</span>类型 [COMMENT 字段注释],</span><br><span class="line">    字段<span class="number">3</span> 字段<span class="number">3</span>类型 [COMMENT 字段注释],</span><br><span class="line">    ...</span><br><span class="line">    字段N 字段N类型 [COMMENT 表注释]</span><br><span class="line">)[COMMENT 表注释]</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：[…]为可选参数，最后一个字段后面不用加逗号(,)</strong></p>
+<h3 id="DDL-表操作-添加"><a href="#DDL-表操作-添加" class="headerlink" title="DDL - 表操作 - 添加"></a>DDL - 表操作 - 添加</h3><p><code>ALTER TABLE 表名 ADD 字段名 字段类型 [COMMENT 字段注释] [约束];</code></p>
+<h3 id="DDL-表操作-修改"><a href="#DDL-表操作-修改" class="headerlink" title="DDL - 表操作 - 修改"></a>DDL - 表操作 - 修改</h3><p><strong>修改数据类型</strong></p>
+<p><code>ALTER TABLE 表名 MODIFY 字段名 新数据类型(长度);</code></p>
+<p><strong>修改字段名和字段类型</strong></p>
+<p><code>ALTER TABLE 表名 CHANGE 旧字段名 新字段名 类型(长度) [COMMENT 字段注释] [约束];</code></p>
+<p><strong>删除字段</strong></p>
+<p><code>ALTER TABLE 表名 DROP 字段名;</code></p>
+<p><strong>修改表名</strong></p>
+<p><code>ALTER TABLE 表名 RENAME TO 新表名;</code></p>
+<h3 id="DDL-表操作-删除"><a href="#DDL-表操作-删除" class="headerlink" title="DDL - 表操作 - 删除"></a>DDL - 表操作 - 删除</h3><p><strong>删除表</strong></p>
+<p><code>DROP TABLE [IF EXISTS] 表;</code></p>
+<p><strong>删除指定表，并重新创建该表</strong></p>
+<p><code>TRUNCATE TABLE 表名;</code></p>
+<h2 id="DML"><a href="#DML" class="headerlink" title="DML"></a>DML</h2><p><strong>简介：</strong>数据操作语言,用于操作数据库对象中所包含的数据.</p>
+<p><strong>常用关键字包括:</strong></p>
+<p>INSERT(添加数据语句)</p>
+<p>UPDATE(更新数据语句)</p>
+<p>DELETE(删除数据语句)</p>
+<h3 id="DML-添加数据"><a href="#DML-添加数据" class="headerlink" title="DML - 添加数据"></a>DML - 添加数据</h3><p><strong>1. 给指定字段添加数据</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 (字段名<span class="number">1</span>,字段名<span class="number">2</span>,...) <span class="keyword">VALUES</span>(值<span class="number">1</span>,值<span class="number">2</span>,...);</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 给全部字段添加数据</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 <span class="keyword">VALUES</span>(值<span class="number">1</span>,值<span class="number">2</span>,...);</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 批量添加数据</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 (字段<span class="number">1</span>,字段<span class="number">2</span>,...) <span class="keyword">VALUES</span>(值<span class="number">1</span>,值<span class="number">2</span>,...),<span class="keyword">VALUES</span>(值<span class="number">1</span>,值<span class="number">2</span>,...),<span class="keyword">VALUES</span>(值<span class="number">1</span>,值<span class="number">2</span>,...);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名 <span class="keyword">VALUES</span>(值<span class="number">1</span>,值<span class="number">2</span>,...),(值<span class="number">1</span>,值<span class="number">2</span>,...)，(值<span class="number">1</span>,值<span class="number">2</span>,...);</span><br></pre></td></tr></table></figure>
+
+<h3 id="DML-修改数据"><a href="#DML-修改数据" class="headerlink" title="DML - 修改数据"></a>DML - 修改数据</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> 表名 <span class="keyword">SET</span> 字段<span class="number">1</span> <span class="operator">=</span> 值<span class="number">1</span>,字段<span class="number">2</span> <span class="operator">=</span> 值<span class="number">2</span>,... [<span class="keyword">WHERE</span> 条件];</span><br></pre></td></tr></table></figure>
+
+<h3 id="DML-删除数据"><a href="#DML-删除数据" class="headerlink" title="DML - 删除数据"></a>DML - 删除数据</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> 表名 [<span class="keyword">WHERE</span> 条件];</span><br></pre></td></tr></table></figure>
+
+<h2 id="DQL"><a href="#DQL" class="headerlink" title="DQL"></a>DQL</h2><p><strong>介绍：</strong>DQL 英文全称是 Data Query Language(数据库查询语言)，数据查询语言，用来查询数据库中表的记录。</p>
+<p>查询关键字：<code>SELECT</code></p>
+<h3 id="DQL-执行顺序"><a href="#DQL-执行顺序" class="headerlink" title="DQL - 执行顺序"></a>DQL - 执行顺序</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	字段列表</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	表名列表</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	条件列表</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	分组字段列表</span><br><span class="line"><span class="keyword">HAVING</span></span><br><span class="line">	分组后条件列表</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">	排序字段列表</span><br><span class="line">LIMIT</span><br><span class="line">	分页参数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">编写顺序</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	表名列表</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	条件列表</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	分组字段列表</span><br><span class="line"><span class="keyword">HAVING</span></span><br><span class="line">	分组后条件列表</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	字段列表</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span></span><br><span class="line">	排序字段列表</span><br><span class="line">LIMIT</span><br><span class="line">	分页参数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">执行顺序</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="DQL-基本查询"><a href="#DQL-基本查询" class="headerlink" title="DQL - 基本查询"></a>DQL - 基本查询</h3><p><strong>1. 查询多个字段</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span> 查询指定字段</span><br><span class="line"><span class="keyword">SELECT</span> 字段<span class="number">1</span>,字段<span class="number">2</span>,字段<span class="number">3</span>,... <span class="keyword">FROM</span> 表名;</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 查询所有字段</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 设置别名</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段<span class="number">1</span> [<span class="keyword">as</span> 别名<span class="number">1</span>],字段<span class="number">2</span> [<span class="keyword">as</span> 别名<span class="number">2</span>],... <span class="keyword">FROM</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 去除重复记录</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> 字段列表 <span class="keyword">FROM</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<h3 id="DQL-条件查询"><a href="#DQL-条件查询" class="headerlink" title="DQL - 条件查询"></a>DQL - 条件查询</h3><p><strong>1. 语法</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 条件列表;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 条件</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">比较运算符</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&gt;</td>
+<td align="center">大于</td>
+</tr>
+<tr>
+<td align="center">&gt;&#x3D;</td>
+<td align="center">大于等于</td>
+</tr>
+<tr>
+<td align="center">&lt;</td>
+<td align="center">小于</td>
+</tr>
+<tr>
+<td align="center">&lt;&#x3D;</td>
+<td align="center">小于等于</td>
+</tr>
+<tr>
+<td align="center">&#x3D;</td>
+<td align="center">等于</td>
+</tr>
+<tr>
+<td align="center">&lt;&gt; 或 !&#x3D;</td>
+<td align="center">不等于</td>
+</tr>
+<tr>
+<td align="center">BETWEEN …AND …</td>
+<td align="center">在某个范围之内(含最小、最大值)</td>
+</tr>
+<tr>
+<td align="center">IN(…)</td>
+<td align="center">在 in 之后的列表中的值，多选一</td>
+</tr>
+<tr>
+<td align="center">LIKE 占位符</td>
+<td align="center">模糊匹配(_匹配单个字符,%匹配任意个字符)</td>
+</tr>
+<tr>
+<td align="center">IS NULL</td>
+<td align="center">是 NULL</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">逻辑运算符</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">AND 或 &amp;&amp;</td>
+<td align="center">并且(多个条件同时成立)</td>
+</tr>
+<tr>
+<td align="center">OR 或 ||</td>
+<td align="center">或者(多个条件任意一个成立)</td>
+</tr>
+<tr>
+<td align="center">NOT 或 !</td>
+<td align="center">非，不是</td>
+</tr>
+</tbody></table>
+<h3 id="DQL-聚合函数"><a href="#DQL-聚合函数" class="headerlink" title="DQL - 聚合函数"></a>DQL - 聚合函数</h3><p><strong>1. 介绍</strong></p>
+<p>将一列数据作为一个整体，进行纵向计算。</p>
+<p><strong>2. 常见的聚合函数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">count</td>
+<td align="center">统计数量</td>
+</tr>
+<tr>
+<td align="center">max</td>
+<td align="center">最大值</td>
+</tr>
+<tr>
+<td align="center">min</td>
+<td align="center">最小值</td>
+</tr>
+<tr>
+<td align="center">avg</td>
+<td align="center">平均值</td>
+</tr>
+<tr>
+<td align="center">sum</td>
+<td align="center">求和</td>
+</tr>
+</tbody></table>
+<p><strong>3. 语法</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 聚合函数(字段列表) <span class="keyword">FROM</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：所有 null 不参与聚合函数的运算。</strong></p>
+<h3 id="DQL-分组查询"><a href="#DQL-分组查询" class="headerlink" title="DQL - 分组查询"></a>DQL - 分组查询</h3><p><strong>1. 语法</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">FROM</span> 表名 [<span class="keyword">WHERE</span> 条件] <span class="keyword">GROUP</span> <span class="keyword">BY</span>分组字段名 [<span class="keyword">HAVING</span> 分组后过滤条件];</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. where 和 having 区别</strong></p>
+<p>执行时间不同：where 是分组之前进行过滤，不满足 where 条件，不参与分组；having 是分组之后对结果进行过滤。</p>
+<p>判断条件不同：where 不能对聚合函数进行判断，而 having 可以。</p>
+<h3 id="DQL-排序查询"><a href="#DQL-排序查询" class="headerlink" title="DQL - 排序查询"></a>DQL - 排序查询</h3><p><strong>1. 语法</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">FROM</span> 表名 <span class="keyword">ORDER</span> <span class="keyword">BY</span> 字段<span class="number">1</span> 排序方式<span class="number">1</span>，字段<span class="number">2</span> 排序方式<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 排序方式</strong></p>
+<p>ASC：升序（默认值）</p>
+<p>DESC：降序</p>
+<p><strong>注意：如果是多字段排序，当第一个字段值相同时，才会根据第二个字段进行排序。</strong></p>
+<h3 id="DQL-分页查询"><a href="#DQL-分页查询" class="headerlink" title="DQL - 分页查询"></a>DQL - 分页查询</h3><p><strong>1. 语法</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段列表 <span class="keyword">FROM</span> 表名 LIMIT 起始索引,查询记录;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<ul>
+<li>起始索引从 0 开始，起始索引 &#x3D; (查询页码-1) * 每页显示记录数。</li>
+<li>分页查询是数据库的方言，不同的数据库有不同的实现，MySQL 中是 LIMIT。</li>
+<li>如果查询的是第一页数据，起始索引可以省略，直接简写为 limit10。</li>
+</ul>
+<h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><p>DCL 英文全称是 Data Control Language(数据控制语言)，用来管理数据库用户、控制数据库的访<br>问权限。</p>
+<h3 id="DCL-用户管理"><a href="#DCL-用户管理" class="headerlink" title="DCL - 用户管理"></a>DCL - 用户管理</h3><p><strong>1. 查询用户表</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> mysql.user;</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询结果</strong></p>
+<p><img src="https://s1.ax1x.com/2022/05/16/OhCb2d.png"></p>
+<p>其中 Host 代表当前用户访问的主机, 如果为 localhost, 仅代表只能够在当前本机访问，是不可以<br>远程访问的。 User 代表的是访问该数据库的用户名。在 MySQL 中需要通过 Host 和 User 来唯一标识一<br>个用户。</p>
+<p><strong>2. 创建用户</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">user</span> <span class="string">&#x27;用户名&#x27;</span>@<span class="string">&#x27;主机号&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;密码&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 修改用户</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">user</span> <span class="string">&#x27;用户名&#x27;</span>@<span class="string">&#x27;主机号&#x27;</span> IDENTIFIED <span class="keyword">WITH</span> mysql_native_password <span class="keyword">BY</span> <span class="string">&#x27;新密码&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>4. 删除用户</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">user</span> <span class="string">&#x27;用户&#x27;</span>@<span class="string">&#x27;主机号&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>注意事项:<br>• 在 MySQL 中需要通过用户名@主机名的方式，来唯一标识一个用户。<br>• 主机名可以使用 % 通配。<br>• 这类 SQL 开发人员操作的比较少，主要是 DBA（ Database Administrator 数据库<br>管理员）使用。</p>
+<h3 id="DCL-权限管理"><a href="#DCL-权限管理" class="headerlink" title="DCL - 权限管理"></a>DCL - 权限管理</h3><p>MySQL 中定义了很多种权限，但是常用的就以下几种：</p>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ALL,ALL PRIVILEGES</td>
+<td>所有权限</td>
+</tr>
+<tr>
+<td>SELECT</td>
+<td>查询数据</td>
+</tr>
+<tr>
+<td>INSERT</td>
+<td>插入数据</td>
+</tr>
+<tr>
+<td>UPDATE</td>
+<td>修改数据</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除数据</td>
+</tr>
+<tr>
+<td>ALTER</td>
+<td>修改表</td>
+</tr>
+<tr>
+<td>DROP</td>
+<td>删除数据库&#x2F;表&#x2F;视图</td>
+</tr>
+<tr>
+<td>CREATE</td>
+<td>创建数据库&#x2F;表</td>
+</tr>
+</tbody></table>
+<p><strong>1. 查询权限</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> GRANTS <span class="keyword">FOR</span> <span class="string">&#x27;用户名&#x27;</span>@<span class="string">&#x27;主机名&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 授予权限</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> 权限列表 <span class="keyword">ON</span> 数据库名.表名 <span class="keyword">TO</span> <span class="string">&#x27;用户名&#x27;</span>@<span class="string">&#x27;主机名&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 撤销权限</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> 权限列表 <span class="keyword">ON</span> 数据库名.表名 <span class="keyword">FROM</span> <span class="string">&#x27;用户名&#x27;</span>@<span class="string">&#x27;主机名&#x27;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>注意事项</p>
+<p>多个权限之间，使用逗号分隔</p>
+<p>授权时，数据库名和表名可以使用 * 进行通配，代表所有</p>
+]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
 </search>

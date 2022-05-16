@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://codertl.github.io/2022/05/16/learn-mysql/</loc>
+    <lastmod>2022-05-16</lastmod>
+  </url>
+  <url>
     <loc>http://codertl.github.io/2022/04/27/js-deepClone/</loc>
     <lastmod>2022-04-27</lastmod>
   </url>
